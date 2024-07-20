@@ -7,17 +7,17 @@ packer {
   }
 }
 
-source "amazon-ebs" "ami-amazon-linux" {
-  ami_name      = "kthamel-ami-amazon-linux"
+source "amazon-ebs" "ami-ubuntu-linux" {
+  ami_name      = "kthamel-ami-ubuntu-linux"
   instance_type = "t2.micro"
   region        = "us-east-2"
-  source_ami    = "ami-0649bea3443ede307"
+  source_ami    = "ami-03bfe38a90ce33425"
   ssh_username  = "ubuntu"
 }
 
 build {
-  name    = "build-ami-amazon-linux"
-  sources = ["source.amazon-ebs.ami-amazon-linux"]
+  name    = "build-ami-ubuntu-linux"
+  sources = ["source.amazon-ebs.ami-ubuntu-linux"]
 
   provisioner "shell" {
     inline = [
