@@ -55,8 +55,7 @@ pipeline {
                 stage('build_ubuntu_linux'){
                     steps {
                         dir('Packer/instance'){
-                            // sh 'packer build ami-ubuntu-linux.pkr.hcl'
-                            sh 'Hello world'
+                            sh 'packer build ami-ubuntu-linux.pkr.hcl'
                         }
                     }
                 }

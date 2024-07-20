@@ -1,12 +1,3 @@
-packer {
-  required_plugins {
-    amazon = {
-      source  = "github.com/hashicorp/amazon"
-      version = "~> 1"
-    }
-  }
-}
-
 source "amazon-ebs" "ami-ubuntu-linux" {
   ami_name      = "kthamel-ami-ubuntu-linux"
   instance_type = "t2.micro"
