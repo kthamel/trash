@@ -16,7 +16,9 @@ pipeline {
 
         stage('packer_init') {
             steps {
-                sh 'packer init .' 
+                dir('Packer/instance'){
+                    sh 'packer init .'
+                } 
             }
         }
 
