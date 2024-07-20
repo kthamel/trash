@@ -2,7 +2,7 @@ source "amazon-ebs" "ami-ubuntu-linux" {
   ami_name      = "kthamel-ami-ubuntu-linux"
   instance_type = "t2.micro"
   region        = "us-east-2"
-  source_ami    = "ami-03bfe38a90ce33425"
+  source_ami    = "ami-0862be96e41dcbf74"
   ssh_username  = "ubuntu"
 }
 
