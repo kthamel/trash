@@ -45,9 +45,14 @@ pipeline {
 
         stage('packer_build') {
             steps {
-                dir('Packer/instance'){
-                    sh 'packer build ami-amazon-linux.pkr.hcl'
-                }
+                parallel(
+                    dir('Packer/instance'){
+                        sh 'packer build ami-amazon-linux.pkr.hcl'
+                    },
+                    dir('Packer/instance'){
+                        sh 'packer build ami-ubuntu-linux.pkr.hcl'
+                    }
+                )
             }
         }
     }
