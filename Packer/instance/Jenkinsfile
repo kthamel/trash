@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('packer_version') {
+            steps {
+                sh 'packer --version' 
+            }
+        }
+
+        stage('aws_version') {
+            steps {
+                sh 'aws --version' 
+            }
+        }
+
+        stage('packer_init') {
+            steps {
+                sh 'packer init .' 
+            }
+        }
+
+        stage('packer_format') {
+            steps {
+                sh 'packer fmt .'
+            }
+        }
+
+        stage('packer_validate') {
+            steps {
+                sh 'packer validate .' 
+            }
+        }
+
+        stage('packer_build') {
+            steps {
+                sh 'packer build ami-amazon-linux.pkr.hcl'
+            }
+        }
+    }
+}
