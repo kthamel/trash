@@ -24,19 +24,25 @@ pipeline {
 
         stage('packer_format') {
             steps {
-                sh 'packer fmt .'
+                dir('Packer/instance'){
+                    sh 'packer fmt .'
+                }
             }
         }
 
         stage('packer_validate') {
             steps {
-                sh 'packer validate .' 
+                dir('Packer/instance'){
+                    sh 'packer validate .'
+                }
             }
         }
 
         stage('packer_build') {
             steps {
-                sh 'packer build ami-amazon-linux.pkr.hcl'
+                dir('Packer/instance'){
+                    sh 'packer build ami-amazon-linux.pkr.hcl'
+                }
             }
         }
     }
