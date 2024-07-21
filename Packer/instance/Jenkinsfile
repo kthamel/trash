@@ -11,7 +11,7 @@ pipeline {
             steps {
                 dir('Packer/instance'){
                     sh 'bash ami-listing.sh'
-                    sh 'py ami_deregister.py'
+                    sh 'python3 ami_deregister.py'
                 } 
             }
         }
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 dir('Packer/instance'){
                     sh 'bash snapshots-listing.sh'
-                    sh 'py snapshots-delete.py'
+                    sh 'python3 snapshots-delete.py'
                 } 
             }
         }
