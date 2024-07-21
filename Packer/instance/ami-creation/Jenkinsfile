@@ -7,24 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('ami_deletion') {
-            steps {
-                dir('Packer/instance'){
-                    sh 'bash ami-listing.sh'
-                    sh 'python3 ami-deregister.py'
-                } 
-            }
-        }
-
-        stage('snapshot_deletion') {
-            steps {
-                dir('Packer/instance'){
-                    sh 'bash snapshots-listing.sh'
-                    sh 'python3 snapshots-delete.py'
-                } 
-            }
-        }
-
         stage('packer_version') {
             steps {
                 sh 'packer --version' 
