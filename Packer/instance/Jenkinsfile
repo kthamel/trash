@@ -11,7 +11,7 @@ pipeline {
             steps {
                 dir('Packer/instance'){
                     sh 'bash ami-listing.sh'
-                    sh 'python3 ami_deregister.py'
+                    sh 'python3 ami-deregister.py'
                 } 
             }
         }
