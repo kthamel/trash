@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    }
+
+    stages {
+        stage('ami_deletion') {
+            steps {
+                dir('Packer/instance'){
+                    sh 'bash ami-listing.sh'
+                    sh 'python3 ami-deregister.py'
+                } 
+            }
+        }
+
+        stage('snapshot_deletion') {
+            steps {
+                dir('Packer/instance'){
+                    sh 'bash snapshots-listing.sh'
+                    sh 'python3 snapshots-delete.py'
+                } 
+            }
+        }
+    }
+}
